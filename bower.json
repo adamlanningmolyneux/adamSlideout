@@ -1,0 +1,13 @@
+{
+  "name": "adamSlideout",
+  "version": "0.0.1",
+  "description": "A very lightweight slideout navigation for browers that support touch API",
+  "homepage": "https://github.com/adamlanningmolyneux/adamSlideout",
+  "author": "adamlanningmolyneux",
+  "main": [
+    "adamSlideout.js"
+  ],
+  "dependencies": {
+    "jquery": ">=2.2.0"
+  }
+}
