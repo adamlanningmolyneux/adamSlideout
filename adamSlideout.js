@@ -62,7 +62,7 @@ $.fn.adamSlideout = function($slideout) {
 		pageX = event.changedTouches[0].pageX;
 		$panel.removeAttr('style');
 		$panel.removeClass('sliding');
-		if(pageX <= (slideoutWidth / 2)){
+		if($panel[0].getBoundingClientRect().left <= (slideoutWidth / 2)){
 			$('body').removeClass('slideout-open');
 		} else {
 			$('body').addClass('slideout-open');
