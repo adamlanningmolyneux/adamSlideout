@@ -5,7 +5,7 @@ $.fn.adamSlideout = function($slideout) {
 	var $panel = $(this);
 	
 			
-	$('.js-slideout-toggle').on("click, tapend", function(){
+	$('.js-slideout-toggle').on("click", function(){
 		$('body').toggleClass('slideout-open');
 	});
 			
