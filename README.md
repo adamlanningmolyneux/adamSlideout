@@ -1,2 +1,2 @@
 # adamSlideout
-A very lightweight slideout navigation for browers that support touch API
+A very lightweight jQuery slideout navigation plugin for browers that support touch API 
