@@ -4,8 +4,11 @@ $.fn.adamSlideout = function($slideout) {
 	var slideoutWidth;
 	var $panel = $(this);
 	
-			
 	$('.js-slideout-toggle').on("click", function(){
+		$('body').toggleClass('slideout-open');
+	});
+	
+	$('.js-slideout-toggle')[0].addEventListener('touchend', function() {
 		$('body').toggleClass('slideout-open');
 	});
 			
@@ -62,7 +65,7 @@ $.fn.adamSlideout = function($slideout) {
 		pageX = event.changedTouches[0].pageX;
 		$panel.removeAttr('style');
 		$panel.removeClass('sliding');
-		if($panel[0].getBoundingClientRect().left <= (slideoutWidth / 2)){
+		if($panel[0].getBoundingClientRect().left <= (2 * slideoutWidth / 3)){
 			$('body').removeClass('slideout-open');
 		} else {
 			$('body').addClass('slideout-open');
