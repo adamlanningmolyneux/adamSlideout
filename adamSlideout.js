@@ -1,4 +1,10 @@
-$.fn.adamSlideout = function($slideout) {
+$.fn.adamSlideout = function(options) {
+	var settings = $.extend({
+			// These are the defaults.
+			slideout: ".slideout",
+			sensitivity: "60"
+	}, options );
+				
 	var pageX;
 	var originX;
 	var slideoutWidth;
@@ -41,7 +47,7 @@ $.fn.adamSlideout = function($slideout) {
 		
 		sliding 			= true;
 		pageX 				= event.changedTouches[0].pageX;
-		slideoutWidth = $slideout.width();
+		slideoutWidth = $(settings.slideout).width();
 		
 		if($(event.target).hasClass('slideout-disabled')){
 			return false;	
@@ -66,7 +72,7 @@ $.fn.adamSlideout = function($slideout) {
 			slideX = slideoutWidth;
 		}
 		
-		if(slideX > 30 || slideX < -30){ //Stop it reacting to minor movement
+		if(slideX > settings.sensitivity || slideX < -settings.sensitivity){ //Stop it reacting to minor movement
 			$panel.css({
 				MozTransition:		"transform 0",
 				WebkitTransition:	"transform 0",
@@ -80,7 +86,8 @@ $.fn.adamSlideout = function($slideout) {
 		}
 	});
 	
-	$('#panel')[0].addEventListener('touchend', function(event) {
+	$panel[0].addEventListener('touchend', function(event) {
+		var snapPoint;
 		
 		if(slideoutWidth === $('body').width() || !sliding){ //Disable via. CSS
 			return false;
@@ -91,7 +98,6 @@ $.fn.adamSlideout = function($slideout) {
 		$panel.removeClass('sliding');
 		
 		//Makes it easier to close when open, and easier to open when closed.
-		var snapPoint;
 		if($('body').hasClass('slideout-open')){
 			snapPoint = (2 * slideoutWidth / 3); 
 		} else {
